@@ -14,7 +14,11 @@ class Exam(models.Model):
 
 
 class Question(models.Model):
-    exam = models.ForeignKey(Exam, related_name='questions', on_delete=models.CASCADE)
+    exam = models.ForeignKey(
+        Exam,
+        related_name='questions',
+        on_delete=models.CASCADE,
+    )
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -26,7 +30,11 @@ class Question(models.Model):
 
 
 class Option(models.Model):
-    question = models.ForeignKey(Question, related_name='options', on_delete=models.CASCADE)
+    question = models.ForeignKey(
+        Question,
+        related_name='options',
+        on_delete=models.CASCADE,
+    )
     text = models.CharField(max_length=255)
     is_correct = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
