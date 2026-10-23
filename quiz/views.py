@@ -14,8 +14,10 @@ class ExamViewSet(viewsets.ModelViewSet):
 class QuestionViewSet(viewsets.ModelViewSet):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
-    filter_backends = [filters.SearchFilter]
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['text']
+    filterset_fields = ['exam']
+    ordering_fields = ['id']
 
 
 class OptionViewSet(viewsets.ModelViewSet):
